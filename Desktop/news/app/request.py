@@ -28,4 +28,36 @@ def get_news(category):
             news_results = process_results(results_list)
     return news_results
 
+def process_results(news_list):
+
+    """
+    this function uses the get method to get data from the server
+    """
+
+    news_results = []
+
+    for entry in news_list:
+        id = entry.get('id')
+        source = entry.get('source')
+        name =entry.get('name')
+        author = entry.get('author')
+        title = entry.get('title')
+        description = entry.get('description')
+        url = entry.get('url') 
+        urlToImage = entry.get ('urlToImage')
+        publishedAt = entry.get ('publishedAt')
+        content = entry.get('content') 
+
+        if content:
+            news_object = News(author,source,title,description,url,urlToImage,publishedAt,content)
+            news_results.append(news_object)
+        elif name:
+            source_object = Source(id,name)
+            news_results.append(source_object)
+    
+
+
+    return news_results
+
+
 
