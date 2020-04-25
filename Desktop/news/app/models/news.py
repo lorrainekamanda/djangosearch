@@ -13,7 +13,11 @@ class News:
        self.content = content
 
 
-
+class Source:
+   def __init__(self,id,name):
+       
+       self.name = name
+       self.id = id
 
     
 
