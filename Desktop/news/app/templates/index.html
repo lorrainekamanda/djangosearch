@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+
+
+     {%block content %}
+    <div class="container-fluid">
+
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" name = "news_query" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+      <ul class="list-group">
+        {% for all_news in totalResults %}
+        <h2>{{all_news.source.name}}</h2>
+        <li class="list-group-item" id="list"> 
+           <br> <h4> {{all_news.title}}  </h4> <br>
+           {{all_news.content}} <br> 
+          by <span style="color: blue;"> <i>   {{all_news.author}}    </i>  </span> <br> <br>
+          <p> Published on :{{all_news.publishedAt}}</p>
+        </li>
+         <hr>
+        {% endfor %}
+
+
+      </ul>
+       
+    </div>  
+    {%endblock%}  
