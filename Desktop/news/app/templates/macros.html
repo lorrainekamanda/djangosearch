@@ -7,7 +7,7 @@
        
 
     {% if all_news.source.name %}
-    <h2>{{all_news.source.name}}</h2>
+    <h2> <a href="new/{{all_news.url}}"> {{all_news.source.name}}    </a></h2>
     {% endif %}
 
 
@@ -35,5 +35,22 @@
    {%endfor%}
 
   </ul>
+ <ul>
 
 {%endmacro%}
+
+
+
+{% macro displaynews(news_list)%}
+
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+ 
+  <li class="text-center">
+      <a href="{{source.url}}">
+          {{ source.name}}</a>
+  </li>
+</div>
+
+
+
+{% endmacro %}
