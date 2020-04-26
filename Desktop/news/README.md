@@ -6,7 +6,7 @@
  This is a News Website that consumes a news api by acquiring the json data of a news website <br/>
  The website is responsive and easy to navigate,it is very fun,appealing  and interactive<br/>
 
- ![L'Rain Pizza Hut](images/log11.png)
+
 
 
 
