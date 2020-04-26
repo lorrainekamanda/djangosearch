@@ -1,0 +1,39 @@
+
+{% macro shownews(news_list)%}
+
+{% for all_news in news_list %}
+
+<ul class="list-group">
+       
+
+    {% if all_news.source.name %}
+    <h2>{{all_news.source.name}}</h2>
+    {% endif %}
+
+
+    <li class="list-group-item" id="list"> 
+
+      {% if all_news.title %}
+       <br> <h4> {{all_news.title}}  </h4> <br>
+      {%endif%}
+
+      {% if all_news.content %}
+       {{all_news.content}} <br>
+       {% endif %} 
+
+       {% if all_news.author %}
+      <span style="color: blue;" > <i> by   {{all_news.author}}    </i>  </span> <br> <br>
+        {% endif %}
+
+        {% if all_news.publishedAt %}
+
+      <p> Published on :{{all_news.publishedAt}}</p>
+      {%endif%}
+    </li>
+     <hr>
+   
+   {%endfor%}
+
+  </ul>
+
+{%endmacro%}
