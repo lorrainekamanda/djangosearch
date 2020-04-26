@@ -59,5 +59,41 @@ def process_results(news_list):
 
     return news_results
 
+def get_new(source):
+    get_new_detail_url = base_url.format(source)
+    with urllib.request.urlopen(get_new_detail_url) as url:
+        new_data_details = url.read()
+        new_data_response = json.loads(new_data_details)
 
+        new_object = None
+
+        if new_data_response:
+            id = new_data_response.get('id')
+            name = new_data_response.get('name')
+            source = new_data_response.get('source')
+            content = new_data_response.get('content')
+            description = new_data_response.get('description')
+            author = new_data_response.get('author')
+            publishedAt = new_data_response.get('publishedAt')
+
+            new_object = News(source,author,content,description,publishedAt,name)
+    return new_object
+
+
+
+    
+        
+
+def search_source(source_name):
+    search_source_url = 'http://newsapi.org/v2/search/news?apiKey={}&query={}'.format(api_key,source_name)
+    with urllib.request.urlopen(search_source_url) as url:
+        search_source_data = url.read()
+        search_source_response = json.loads(search_source_data)
+
+        search_source_results = None
+        if search_source_response['articles']:
+            search_source_list = search_source_response['articles']
+            search_source_results = process_results(search_source_list)
+
+    return search_source_results
 
